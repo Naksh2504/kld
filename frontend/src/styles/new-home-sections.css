@@ -1,0 +1,327 @@
+/* =============================================================
+   Phase 3 - 8: New Landing Page Sections (Redesign)
+   ============================================================= */
+
+/* Common Section Styles */
+.new-home-landing .home-workflow-section,
+.new-home-landing .home-features-section,
+.new-home-landing .home-dieline-explanation,
+.new-home-landing .home-audience-section,
+.new-home-landing .home-demo-section {
+  max-width: 1320px;
+  margin: 120px auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 2;
+}
+
+/* --- Workflow --- */
+.new-home-landing .workflow-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.new-home-landing .workflow-header h2 {
+  font-family: var(--font-heading);
+  font-size: 40px;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+.new-home-landing .workflow-header p {
+  color: var(--color-secondary);
+  font-size: 18px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.new-home-landing .workflow-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+.new-home-landing .workflow-step {
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  transition: transform 0.3s ease;
+}
+.new-home-landing .workflow-step:hover {
+  transform: translateY(-5px);
+}
+.new-home-landing .step-number {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: 20px;
+}
+.new-home-landing .workflow-step h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.new-home-landing .workflow-step p {
+  color: var(--color-secondary);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* --- Features --- */
+.new-home-landing .home-features-section {
+  background: #111111;
+  color: #ffffff;
+  max-width: 100%;
+  padding: 100px 24px;
+  margin-bottom: 0;
+}
+.new-home-landing .features-header {
+  max-width: 1320px;
+  margin: 0 auto 60px;
+  text-align: center;
+}
+.new-home-landing .features-header h2 {
+  font-family: var(--font-heading);
+  font-size: 40px;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+.new-home-landing .features-header p {
+  color: #a1a1aa;
+  font-size: 18px;
+}
+.new-home-landing .features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+.new-home-landing .feature-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.new-home-landing .feature-icon {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+.new-home-landing .feature-card h3 {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+.new-home-landing .feature-card p {
+  color: #a1a1aa;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* --- Dieline Explanation --- */
+.new-home-landing .home-dieline-explanation {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+.new-home-landing .dieline-expl-content {
+  flex: 1;
+}
+.new-home-landing .dieline-expl-content h2 {
+  font-family: var(--font-heading);
+  font-size: 40px;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+}
+.new-home-landing .dieline-expl-content p {
+  color: var(--color-secondary);
+  font-size: 18px;
+  line-height: 1.6;
+}
+.new-home-landing .dieline-expl-visual {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.new-home-landing .dieline-visual-demo {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  background: #ffffff;
+  border-radius: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.new-home-landing .dieline-blueprint {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border: 1.5px dashed var(--cad-crease);
+  background: rgba(0, 122, 255, 0.02);
+}
+.new-home-landing .dieline-blueprint::before {
+  content: "";
+  position: absolute;
+  top: 50px; left: -30px;
+  width: 30px; height: 150px;
+  border: 1.5px solid var(--cad-cut);
+  border-right: none;
+}
+.new-home-landing .dieline-blueprint::after {
+  content: "";
+  position: absolute;
+  top: 50px; right: -30px;
+  width: 30px; height: 150px;
+  border: 1.5px solid var(--cad-cut);
+  border-left: none;
+}
+
+/* --- Built For --- */
+.new-home-landing .audience-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.new-home-landing .audience-header h2 {
+  font-family: var(--font-heading);
+  font-size: 40px;
+  letter-spacing: -1px;
+}
+.new-home-landing .audience-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.new-home-landing .audience-card {
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.05);
+  padding: 40px 30px;
+  border-radius: 20px;
+  text-align: center;
+}
+.new-home-landing .audience-card h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+.new-home-landing .audience-card p {
+  color: var(--color-secondary);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* --- Demo Section (CTA) --- */
+.new-home-landing .home-demo-section {
+  text-align: center;
+}
+.new-home-landing .demo-cta-box {
+  background: linear-gradient(135deg, #111111 0%, #1a1a1a 100%);
+  color: #fff;
+  padding: 80px 40px;
+  border-radius: 30px;
+  position: relative;
+  overflow: hidden;
+}
+.new-home-landing .demo-cta-box h2 {
+  font-family: var(--font-heading);
+  font-size: 48px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+}
+.new-home-landing .demo-cta-box p {
+  color: #a1a1aa;
+  font-size: 20px;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 2;
+}
+.new-home-landing .demo-cta-box .btn-large {
+  padding: 16px 32px;
+  font-size: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+/* --- Footer --- */
+.new-home-landing .home-footer {
+  background: #000000;
+  color: #ffffff;
+  padding: 80px 24px 40px;
+  margin-top: 100px;
+}
+.new-home-landing .footer-columns {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 80px;
+}
+.new-home-landing .brand-col .brand-text {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+.new-home-landing .brand-col p {
+  color: #a1a1aa;
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 300px;
+}
+.new-home-landing .footer-col h4 {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+.new-home-landing .footer-col a {
+  display: block;
+  color: #a1a1aa;
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 16px;
+  transition: color 0.2s ease;
+}
+.new-home-landing .footer-col a:hover {
+  color: #ffffff;
+}
+.new-home-landing .footer-bottom {
+  max-width: 1320px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 40px;
+  text-align: center;
+  color: #a1a1aa;
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .new-home-landing .workflow-steps,
+  .new-home-landing .features-grid,
+  .new-home-landing .audience-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .new-home-landing .home-dieline-explanation {
+    flex-direction: column;
+    text-align: center;
+  }
+  .new-home-landing .footer-columns {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .new-home-landing .workflow-steps,
+  .new-home-landing .features-grid,
+  .new-home-landing .audience-grid,
+  .new-home-landing .footer-columns {
+    grid-template-columns: 1fr;
+  }
+}

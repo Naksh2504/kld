@@ -1,0 +1,271 @@
+/* --- SCROLLING STICKY NAVBAR --- */
+.navbar-wrapper {
+  position: fixed; 
+  top: 0; left: 0; width: 100%;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.06));
+  z-index: 9999;
+  transition: filter 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.navbar-wrapper.scrolled {
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.15));
+}
+
+.navbar-shape {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 80px;
+}
+.navbar-bg {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 80px;
+  background-color: #ffffff;
+  
+  /* Light, precise engineering grid spanning the entire navbar */
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.015) 1px, transparent 1px);
+  background-size: 40px 40px, 40px 40px, 10px 10px, 10px 10px;
+  background-position: 0 0;
+  
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08); 
+}
+
+/* SONAR RIPPLES + "A LITTLE DARK" TAB */
+.navbar-tab {
+  position: absolute;
+  top: 0px; 
+  left: 20px;
+  width: 160px;
+  height: 160px;
+  /* A premium, matte light-grey to separate it from the white navbar */
+  background: #f0f0f3;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Subtle inner shadow gives it a stamped/recessed physical feel */
+  box-shadow: inset 0 2px 10px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
+  
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
+  transform-origin: 80px 80px; 
+}
+.navbar-wrapper.scrolled .navbar-tab {
+  transform: scale(0); 
+  opacity: 0;
+}
+
+/* Expanding Ripple Rings */
+.kld-ripple {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 0, 0, 0.12); /* Slightly darker ripples to stand out on the grey */
+  animation: sonarPulse 4s cubic-bezier(0.1, 0.5, 0.8, 1) infinite;
+}
+
+@keyframes sonarPulse {
+  0% { transform: scale(0.3); opacity: 0; border-width: 3px; }
+  20% { opacity: 1; }
+  80% { opacity: 1; border-width: 1px; }
+  100% { transform: scale(1.1); opacity: 0; border-width: 0px; }
+}
+
+.navbar-content {
+  position: relative;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.brand-text {
+  color: #111; 
+  font-weight: 800;
+  letter-spacing: 2px;
+  font-size: 16px;
+  margin-left: 220px; 
+  transition: margin-left 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.navbar-wrapper.scrolled .brand-text {
+  margin-left: 140px; 
+}
+
+.nav-links {
+  margin-left: 60px;
+  display: flex;
+  gap: 40px;
+}
+.nav-links a {
+  color: #555;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.3s;
+  position: relative;
+  padding-bottom: 4px;
+}
+.nav-links a:hover, .nav-links a.active { color: #111; }
+
+.actions {
+  margin-left: auto;
+  margin-right: 60px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn-primary {
+  position: relative;
+  isolation: isolate;
+  background: transparent;
+  color: #fff;
+  padding: 10px 24px; border-radius: 100px;
+  text-decoration: none; font-size: 14px; font-weight: 700;
+  display: flex; align-items: center; gap: 8px;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  cursor: pointer;
+}
+.btn-primary:hover { 
+  transform: translateY(-2px); 
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2); 
+}
+.btn-primary svg { transition: transform 0.3s ease; }
+.btn-primary:hover svg { transform: translateX(4px); }
+
+/* Dark Gunmetal Metallic Body */
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 2px; left: 2px; right: 2px; bottom: 2px;
+  border-radius: 100px;
+  background: linear-gradient(180deg, #4d4d4d 0%, #2a2a2a 45%, #181818 50%, #222222 55%, #3d3d3d 100%);
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.2), inset 0 -2px 4px rgba(0,0,0,0.5);
+  z-index: -1;
+}
+
+/* Animated Rainbow Border */
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%; width: 200%; height: 200%;
+  background: conic-gradient(from 0deg, #ff3b30, #ff9500, #ffcc00, #34c759, #007aff, #5856d6, #ff2d55, #ff3b30);
+  z-index: -2;
+  animation: rotateRainbow 3s linear infinite;
+}
+
+@keyframes rotateRainbow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Attractive, Modern Glowing Workspace Button */
+.btn-secondary {
+  background: #ffffff;
+  color: #333;
+  border: 1px solid rgba(92, 77, 255, 0.2); 
+  padding: 10px 20px;
+  border-radius: 100px; text-decoration: none;
+  font-size: 14px; font-weight: 600;
+  display: flex; align-items: center; gap: 10px;
+  box-shadow: 0 2px 8px rgba(92, 77, 255, 0.05); 
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* The glass shine effect */
+.btn-secondary::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(92, 77, 255, 0.15), transparent);
+  transition: left 0.6s ease;
+}
+
+.btn-secondary:hover { 
+  border-color: rgba(92, 77, 255, 0.6);
+  box-shadow: 0 4px 16px rgba(92, 77, 255, 0.15);
+  transform: translateY(-2px);
+  color: #5c4dff;
+}
+
+.btn-secondary:hover::before {
+  left: 100%;
+}
+
+.btn-secondary svg { 
+  color: #5c4dff; 
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.btn-secondary:hover svg {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* --- ANIMATED LOGO CONTAINER --- */
+.svg-container {
+  position: absolute;
+  top: -30px; left: 0; width: 5000px; height: 180px; 
+  pointer-events: none; z-index: 20; 
+  
+  clip-path: polygon(0 0, 5000px 0, 5000px 100%, 0 100%);
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), clip-path 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  transform-origin: 100px 110px; 
+}
+.navbar-wrapper.scrolled .svg-container {
+  transform: translateY(-40px) scale(0.35);
+  clip-path: polygon(0 0, 2200px 0, 2200px 100%, 0 100%);
+}
+
+/* --- DYNAMIC LASER MORPHING --- */
+.box-path {
+  fill: none; stroke: #111; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.25));
+  stroke-dasharray: 11.667 200; stroke-dashoffset: 11.667;
+  animation: drawLine 4.5s linear infinite;
+  
+  d: path('M 0 110 L 50 110 L 50 85 L 100 60 L 150 85 L 100 110 L 50 85 L 50 135 L 100 160 L 100 110 L 150 85 L 150 135 L 100 160 L 150 135 L 150 110 L 5000 110');
+  transition: d 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.navbar-wrapper.scrolled .box-path {
+  d: path('M 0 110 L 50 110 L 50 85 L 100 60 L 150 85 L 100 110 L 50 85 L 50 135 L 100 160 L 100 110 L 150 85 L 150 135 L 100 160 L 150 135 L 150 135 L 5000 135');
+}
+
+.svg-container .arrow {
+  fill: #111;
+  filter: none;
+  offset-path: path('M 0 110 L 50 110 L 50 85 L 100 60 L 150 85 L 100 110 L 50 85 L 50 135 L 100 160 L 100 110 L 150 85 L 150 135 L 100 160 L 150 135 L 150 110 L 5000 110');
+  transition: offset-path 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  animation: moveArrow 4.5s linear infinite;
+}
+.navbar-wrapper.scrolled .svg-container .arrow {
+  offset-path: path('M 0 110 L 50 110 L 50 85 L 100 60 L 150 85 L 100 110 L 50 85 L 50 135 L 100 160 L 100 110 L 150 85 L 150 135 L 100 160 L 150 135 L 150 135 L 5000 135');
+}
+
+@keyframes moveArrow {
+  0% { offset-distance: 0%; opacity: 0; }
+  1% { opacity: 1; }
+  2% { offset-distance: 0.901%; } 
+  25% { offset-distance: 12.56%; } 
+  37% { offset-distance: 12.56%; opacity: 1; } 
+  62% { offset-distance: 100%; opacity: 1; } 
+  63% { opacity: 0; offset-distance: 100%; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+@keyframes drawLine {
+  0% { stroke-dashoffset: 11.667; opacity: 0; }
+  1% { opacity: 1; }
+  2% { stroke-dashoffset: 10.766; } 
+  25% { stroke-dashoffset: -0.893; } 
+  37% { stroke-dashoffset: -0.893; opacity: 1; } 
+  62% { stroke-dashoffset: -88.333; opacity: 1; } 
+  63% { opacity: 0; stroke-dashoffset: -88.333; } 
+  100% { stroke-dashoffset: 11.667; opacity: 0; }
+}
